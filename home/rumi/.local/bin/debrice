@@ -1,0 +1,12 @@
+#!/bin/sh
+set -x
+rpo="$HOME/.local/src/debrice"
+
+configs=".zshrc .xinitrc .config/i3 .config/fontconfig .config/nvim .local/bin"
+for x in ${configs}; do
+	conf="${HOME}/${x}"
+	rm -rf "${rpo}/.*"
+
+	mkdir -p "${rpo}/$(dirname "$conf")"
+	cp -rf "$conf" "${rpo}/$(dirname "$conf")"
+done
